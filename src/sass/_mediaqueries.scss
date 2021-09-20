@@ -1,0 +1,47 @@
+/* DT173G moment 3.2 av Alice Fagerberg
+Media queries */
+@media screen and (min-width:700px) {
+
+    header{
+        flex-direction: column;
+
+        .menubars {
+            display:none;
+        }
+
+        #horizontal {
+            display:block;
+            width:auto;
+            height:auto;
+            background-color: $primary-color2;
+            li{
+                float:left;
+            }
+        }
+
+        #dropdown{
+            display:none;
+        }
+        nav{
+            display:none;
+
+        }
+        
+    }
+
+    #maincontent{
+        .imgbox{
+            min-width:500px;
+            flex:50%;
+        }
+    }
+    
+}
+@media screen and (min-width:860px) {
+    header{
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap:wrap;
+        
+    }
+}

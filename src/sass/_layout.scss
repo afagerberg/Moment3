@@ -1,0 +1,280 @@
+/* DT173G moment 3.2 av Alice Fagerberg
+utseende - använder nesting, selector inheritance, color functions*/
+@import 'reset';
+
+body {
+    font-family: $font-head;
+}
+
+a{ text-decoration:none;}
+
+/* I sidhuvudet */
+header {
+    position:sticky;
+    top:0;
+    width:100%;
+    background-color:white;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.63);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap:wrap;
+
+    .menubars {
+        display: inline-block;
+        cursor: pointer;
+        margin-right:20px;
+        margin-top:5px;
+      }
+      
+      .bar1, .bar2, .bar3 {
+        width: 40px;
+        height: 5px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+        border-radius:3px;
+      }
+      
+      .change .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        transform: rotate(-45deg) translate(-9px, 6px);
+      }
+      
+      .change .bar2 {opacity: 0;}
+      
+      .change .bar3 {
+        -webkit-transform: rotate(45deg) translate(-9px, -6px);
+        transform: rotate(45deg) translate(-9px, -6px);
+      }
+    
+}
+
+h1 {
+    color:$primary-color1;
+    padding:10px;
+    font-size: 1.8em;
+}
+
+    
+header{ 
+    nav{
+        background-color: $primary-color2;
+        height:0;
+        overflow: hidden;
+        width:100%;
+        transition:all 0.2s;
+    } 
+    
+    #horizontal {
+        display:none;
+    }
+    ul{
+        width:100%;
+    
+        li{    
+                
+            a{ 
+                display:block;
+                width:100%;
+                padding:18px;
+                color: lighten($primary-color1, 80);
+                font-weight:bold;
+                font-size:1.1em;
+                transition:all 0.3s;
+                border-right:1px solid darken($primary-color2, 7);
+            }
+
+            a:hover, .current{ 
+                background-color:$primary-color1;
+                color: lighten($primary-color1, 60);
+            }
+
+            
+        }
+    }
+
+}
+
+/*banner */
+#banner {
+    max-width:1200px;
+    margin:0 auto;
+    padding-top:50px;
+    padding-bottom:50px;
+    border-bottom: 2px solid $primary-color1;
+
+    p {
+        max-width:fit-content;
+        width:94%;
+        margin:0 auto;
+        font-size:2.2em;
+        font-weight:bold;
+        padding:10px 10px 10px 0; 
+        color:$base-color;
+        line-height:1.5;
+
+        strong {
+            background-color:$primary-color1;
+            padding:10px;
+            color:white;
+            
+        }
+    }
+}
+/*sidinnehåll */
+main {
+    max-width:1200px;
+    margin:0 auto;
+    padding: 20px 0 20px 0;
+    
+    #maincontent{
+        display:flex;
+        justify-content:center;
+        flex-direction:row;
+        flex-wrap: wrap;
+
+        .imgbox {
+            height:auto;
+            width:100%;
+            
+            img {
+                display:block;
+                width:100%;
+            }
+    
+        }
+    
+        .textbox {
+            @extend .imgbox;
+            padding:20px;
+            background-color:invert($base-color);
+        }
+    }
+    
+}
+
+main {
+    h2 {
+        font-size:1.8em;
+        color:$primary-color1;
+        padding-bottom:16px;
+    }
+
+    .paragraph {
+        color: $base-color;
+        font-size:1.1em;
+        line-height:1.6;
+        font-family:$font-text
+    }
+}
+
+/* infolådor */
+#info {
+    max-width:fit-content;
+    padding-top:50px;
+    margin:0 auto;
+    text-align: center;
+
+    .imgbox {
+        max-width:150px;
+        margin:0 auto;
+
+        img {
+            width:100%;
+        }
+    }
+
+}
+
+.previousinfo {
+    @include infobox(2px, darken($primary-color2,5));
+    
+    a {
+        @include infobutton(darken($primary-color2,5), white);
+    }
+    a:hover {
+        background-color: $primary-color1;
+    }
+}
+.moreinfo {
+    
+    @include infobox(2px, invert($base-color,60));
+
+    a {
+        @include infobutton(invert($base-color,60), white)
+    }
+    a:hover {
+        background-color:$base-color;
+    }   
+}
+
+/*i sidfoten */
+footer {
+    background-color: $primary-color2;
+    padding:50px 10px 20px 10px;
+
+    .footerbox {
+        @include infobox(2px, white);
+        text-align:center;
+
+        a{
+            @include infobutton(white,$primary-color2);
+            font-weight:bold;
+        }
+
+        a:hover {
+            background-color: $primary-color1;
+            color:white;
+        }
+    }
+
+    p{
+        @extend .shortinfo;
+        text-align:center;
+        color:white;
+        padding-top:20px;
+    }
+
+}
+
+.shortinfo{
+    font-family: $font-text;
+    font-size:0.95em;
+}
+
+.footerlist {
+    color:white;
+    h3 {
+        text-align:center;
+        font-size:1.2em;
+        border-bottom:2px solid white;
+        max-width:500px;
+        margin:0 auto;
+    }
+
+    ul {
+        max-width:500px;
+        margin:0 auto;
+        text-align:center;
+        padding-top:10px;
+        border-bottom:2px solid white;
+    }
+
+    li {
+        font-family: $font-text;
+        font-size:1.1em;
+        padding-bottom:10px;
+    }
+
+    a{
+        color:white;
+    }
+
+    a:hover {
+        color: $primary-color1;
+    }
+}
+
+
+

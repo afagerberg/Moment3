@@ -1,0 +1,42 @@
+/* DT173G moment 3.2 av Alice Fagerberg*/
+//Variabler
+$font-head: 'Courier New', Courier, monospace;
+$font-text:Verdana, Tahoma, sans-serif;
+
+//Färgschema
+$primary-color1:rgb(235, 106, 0);
+$primary-color2:#f3aa64; 
+$base-color: rgb(44, 44, 44);
+
+//Mixins och if-satser
+
+@mixin infobox($border, $color) {
+    max-width:500px;
+    width:100%;
+    margin: 0 auto;
+    margin-top:10px;
+    margin-bottom:50px;
+    padding:20px;
+    font-size:1.2em;
+    //font-family: $font-text;
+    @media screen and(max-width: 600px){
+        padding:16px;
+    }
+    @if $border{
+        border:$border solid $color;
+        color:$color;
+    }@else{
+        color: $color;
+    }
+}
+
+@mixin infobutton($backgcolor, $fontcolor){
+    display:inline-block;
+    margin-top:15px;
+    padding:15px;
+    font-family: $font-text;
+    font-size:0.9em;
+    color: $fontcolor;
+    background-color: $backgcolor;
+    transition:all 0.3s;
+}
