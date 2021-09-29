@@ -5,6 +5,7 @@ const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass')(require('sass'));
+const babel = require('gulp-babel');
 
 //sökvägar
 const files = {
@@ -35,6 +36,7 @@ function sassTask() {
 function jsTask() {
     return src(files.jsPath)
     .pipe(sourcemaps.init())
+    .pipe(babel())//Transpilerar...
     .pipe(concat('main.js'))
     .pipe(terser())
     .pipe(sourcemaps.write('../maps'))

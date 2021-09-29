@@ -1,4 +1,10 @@
 "use strict";
+
+const rootVeg = "potato";
+let characters = [...rootVeg];
+
+console.log(`Testar transpilering... ${characters}`);
+
 let menubars = document.getElementsByClassName("menubars");
 let menu = document.getElementById("menu");
 
